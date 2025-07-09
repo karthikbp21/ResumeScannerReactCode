@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import ResumeUpload from './components/ResumeUpload';
+import CandidateQuery from './components/CandidateQuery';
+import CandidateTable from './components/CandidateTable';
+import ExcelExport from './components/ExcelExport';
+import LoadingSpinner from './components/LoadingSpinner';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [candidates, setCandidates] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        {/*<header className="App-header">*/}
+        {/*  Resume AI Assistant*/}
+        {/*</header>*/}
+        <main>
+          <Routes>
+            <Route
+              path="/candidates"
+              element={
+                <>
+                  <ResumeUpload />
+                  <CandidateQuery setCandidates={setCandidates} />
+                  <CandidateTable candidates={candidates} />
+                  <ExcelExport />
+                  <LoadingSpinner isLoading={isLoading} />
+                </>
+              }
+            />
+            <Route path="/" element={<Navigate to="/candidates" />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
+
