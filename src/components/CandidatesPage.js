@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import CandidateTable from './CandidateTable';
 import ResumeUpload from './ResumeUpload';
 import CandidateQuery from './CandidateQuery';
@@ -6,6 +7,17 @@ import ExcelExport from './ExcelExport';
 
 const CandidatesPage = () => {
   const [candidates, setCandidates] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/candidates.json')
+      .then(response => {
+        console.log('Successfully fetched candidates:', response.data);
+        setCandidates(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the candidates:', error);
+      });
+  }, []);
 
   return (
     <div className="container mt-4">
