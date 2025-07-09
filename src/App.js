@@ -11,13 +11,13 @@ import './App.css';
 const App = () => {
   const [candidates, setCandidates] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     axios.get('http://localhost:3000/candidates.json')
         .then(response => setCandidates(response.data))
         .catch(error => console.error('Error fetching candidates:', error));
   }, []);
 
-  debugger;
   return (
     <Router>
       <div className="App">
