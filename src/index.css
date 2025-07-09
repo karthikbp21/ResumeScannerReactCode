@@ -1,45 +1,165 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset and base styles */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  box-sizing: border-box;
 }
 
-div {
-  margin: 20px;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+  color: #495057;
+  line-height: 1.6;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: #212529;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-button:hover {
-  background-color: #0056b3;
+/* Links */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+a:hover {
+  color: #0b5ed7;
 }
 
-table th, table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-table th {
-  background-color: #007bff;
-  color: white;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Focus styles */
+.form-control:focus,
+.btn:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(13, 110, 253, 0.2);
+  color: #212529;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+}
+
+.shadow {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Bootstrap overrides */
+.container {
+  max-width: 1200px;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.col-lg-6,
+.col-md-6,
+.col-md-4,
+.col-md-8,
+.col-12 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Loading states */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .col-lg-6,
+  .col-md-6,
+  .col-md-4,
+  .col-md-8,
+  .col-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
